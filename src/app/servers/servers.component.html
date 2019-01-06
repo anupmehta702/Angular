@@ -1,0 +1,30 @@
+<h3>I am in Servers component </h3>
+
+
+<label>Server name using event handling </label>
+<input type="text" class="form-control" (input)="onUpdateServerName($event)">
+<!-- (input) is a DOM property and $event is provided by html -->
+
+
+
+<label>Server name using ngModel </label>
+<input type="text" class="form-control" [(ngModel)]="serverName">
+
+
+
+<button class="btn btn-primary"
+(click)="onCreateServer()" 
+ [disabled] ="!allowNewServer"> <!-- property binding with angular rem there is no curly braces {{}}-->
+Add server</button> 
+<p class="p2" [innerText]="allowNewServer"></p><!--string interpolation (to be used to show text on screen) -->
+
+
+<p *ngIf="serverCreated; else noServer">Server creation status -->{{ serverCreationStatus }} with name-->{{ serverName}}</p>
+<ng-template #noServer>
+	<p>No server was created !</p>
+</ng-template>
+
+
+<app-server *ngFor="let server of servers" [displayServerName]="server"></app-server>
+
+

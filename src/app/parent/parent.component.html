@@ -1,0 +1,20 @@
+<h1>------------------------------------------</h1>
+
+<h1>Welcome to Parent app  </h1>
+
+<p *ngIf="serverName; else noServer">Value from child --> {{serverName}}</p>
+<ng-template #noServer>
+	<p>Child not ready yet to send value</p>
+</ng-template>
+
+<p>Counter from child --> {{counter}}</p>
+
+<app-child oneWayBindedVar="Parent value" (change)="updatedValueFromChild($event)"
+(changeCounter)="updateCounteValueFromChild($event)"></app-child>
+
+
+<button class="button btn-primary" disabled='{{isDisabled}}'>Try Me with string interpolation</button>
+<button class="button btn-primary" [disabled]='isDisabled'>Try Me with property binding</button>
+
+<h1>-------------------------------------------</h1>
+
